@@ -120,22 +120,33 @@ picoCTF{qu1t3_a_v13w_2020}
 ```
 
 
-# Challenge 1 : 
+# Challenge 3 : m00nwalk
 
+Decode this message from the moon.
+- Hint 1 : How did pictures from the moon landing get sent back to Earth?
+- Hint 2 : What is the CMU mascot?, that might help select a RX option
 
 ## Solution : 
--
-![m00nwalk](../pics/?raw=true)
+- Open instance
+- I saw the first hint and checked online about the same
+- I found out that they used SSTV(slow scan television) for that
+- Also, I found out that there is a SSTV decoder online, which I used to upload the .wav audio file and got the flag 
+![m00nwalk flag](../pics/decoded-image.png?raw=true)
 
 ## Flag : 
 ```sh
-
+picoCTF{beep_boop_im_in_space}
 ```
 
 ## Concepts Learnt :
 
+- Learnt about SSTV files and how they were used to get pics from the moon landing
 
 ## Notes : 
 
+Tried to put the audio file on a morse code decoder before i read the hints and realised that was completely wrong
 
 ### Reference : 
+```sh
+- https://sstv-decoder.mathieurenaud.fr/
+```
