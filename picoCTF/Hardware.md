@@ -12,7 +12,7 @@ As an example, entering x = 34359738368 gives (y0, ..., y11), so the flag would 
 - Seeing the total number of logic gates on the other file and considering that they only take 0 or 1 as an inout, figured out that we would have to convert the input to a 36 bit binary input
 - Got that number as 000001101100011000101001010101011110
 - Now, I solved the logic gates and got the flag
-![iq test Flag](../pics/iqtest.png?raw=true)
+![iq test Flag](../pics/iqtest%20(1).png?raw=true)
 
 ## Flag : 
 ```sh
