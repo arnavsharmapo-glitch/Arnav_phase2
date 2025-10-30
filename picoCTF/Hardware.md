@@ -31,32 +31,46 @@ No alternate tangents
 
 None
 
-# Challenge 1 : 
+# Challenge 2 : i like logic
 
+i like logic and i like files, apparently, they have something in common, what should my next step be.
 
 ## Solution : 
--
-![GDB baby step1 Flag](../pics/?raw=true)
+- I got two files for the challenge, one was a .sal file and the other was the desciption foe the challenge
+- Opened the .sal file in Logi2 as i figured out that it was a Sal logic analyser file
+- I found a lot of 1's and 0's in the 3rd channel
+- Exported that raw data into a file and got a .csv file with all the cluttered data and a comma delimiter
+- Went to an comma delimiter to delimit that file and get the text in a readable format
+- Opened the file in Excel and saw that there were values attatched to the time stamps
+- Searched for a flag in there using the search function and got it
 
 ## Flag : 
 ```sh
-
+FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}
 ```
 
 ## Concepts Learnt :
 
+- Learnt about .sal files and how to open them
+- Learnt how CTF's often use delimited data to hide information about flags and such 
 
 ## Notes : 
 
+Accidentally used find and replace option to remove all numbers from the data resulting in getting the wring flag the first time
 
 ### Reference : 
+```sh
+- https://delim.co/#
+```
 
-# Challenge 1 : 
 
+# Challenge 3 : Bare Metal Alchemist
+
+my friend recommended me this anime but i think i've heard a wrong name.
 
 ## Solution : 
+
 -
-![GDB baby step1 Flag](../pics/?raw=true)
 
 ## Flag : 
 ```sh
