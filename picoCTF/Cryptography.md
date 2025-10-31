@@ -69,22 +69,51 @@ No alternate tangents
 
 - https://en.wikipedia.org/wiki/RSA_cryptosystem#Operation
 
-# Challenge 1 : 
+# Challenge 3 : rsa_oracle
 
+Can you abuse the oracle?
+An attacker was able to intercept communications between a bank and a fintech company. They managed to get the message (ciphertext) and the password that was used to encrypt the message.
+After some intensive reconassainance they found out that the bank has an oracle that was used to encrypt the password and can be found here nc titan.picoctf.net 59327. Decrypt the password and use it to decrypt the message. The oracle can decrypt anything except the password.
+
+- Hint 1 : Crytography Threat models: chosen plaintext attack.
+- Hint 2 : OpenSSL can be used to decrypt the message. e.g openssl enc -aes-256-cbc -d ...
+- Hint 3 : The key to getting the flag is by sending a custom message to the server by taking advantage of the RSA encryption algorithm.
+- Hint 4 : Minimum requirements for a useful cryptosystem is CPA security.
 
 ## Solution : 
--
-![RSA Oracle](../pics/?raw=true)
+- We get two files from the instance, one was a password file which conatined a huge number and the other was a secret file which was encrypted using OpenSSL(as can be seen on the usage of Salted) and didn't have any understandable text
+- Our password file contained a cipher for us which was basically a large number
+- After connecting into the challenge on a terminal via the key, we see that it asks us to either encrypt or decrypt our input
+- On entering any random number as input, we see that it is using RSA encryption for it's security and it gives a hex and a ciphertext
+- Now we understand that the key to getting the flag is by sending a custom message to the server by taking advantage of the RSA encryption algorithm
+- The cipher that we got was our input number raised to power e(65587 usually) mod N
+- So I encrypted 2, which gives me a cipher text value of 2^e %n
+- Now, we can multiply our cipher in the password file with that number which is basically (2m)^e mod n
+- Now, we decrypt this value to get us an output as 2m
+- This gives us a hex string, which we convert to decimal first and divide it by 2, to get out value as m, change it back to hexdecimal and then finally to ASCII value
+- After researching, I found that openssl can give us a key for decryption using -k as an argument
+- I finally got my flag after I entered the code snippet given to us in the hint after completing it which was as follows
+```sh
+openssl enc -aes-256-cbc -d -in secret.enc -k  3319c
+```  
 
 ## Flag : 
 ```sh
-
+picoCTF{su((3ss_(r@ck1ng_r3@_3319c817}
 ```
 
 ## Concepts Learnt :
 
+- Learnt more about RSA encryption
+- Learnt how to bypass RSA if it is unguarded by using a multiple of the actual password
+- This method is known as Chosen PlainText Attack(CPA), which I learned by researching through the web
 
 ## Notes : 
 
+Tried to enter inputs in many other forms like hex code, decimal code and binary code to decrypt it to get the password. Used ASCII values at last
 
 ### Reference : 
+```sh
+- https://ctf101.org/cryptography/what-is-rsa/
+- https://www.geeksforgeeks.org/computer-networks/rsa-algorithm-cryptography/
+```
