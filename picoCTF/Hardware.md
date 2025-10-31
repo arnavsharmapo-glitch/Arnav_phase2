@@ -70,17 +70,33 @@ my friend recommended me this anime but i think i've heard a wrong name.
 
 ## Solution : 
 
--
+-  This challenge cintained a file called as firmware.elf and we got a hint from the challenge names itself, this was a bare metal .elf executable file
+-  After downloading the file, i used exiftool on the file to get more info about the file
+-  I then also used the readelf command to get even more information on the file which tld me that this file was an AVR 8-bit microcontroller machine
+-  Now, i need to find the code for the flag
+-  On researching, i found out about the avr-objdump command and used it, but didn't get anything useful from it
+-  I researched further and found our the simavr command which us to simulate micro-controllers in Linux
+-  Now i found an anomaly at position 0x68 which ,eant that the flag could possibly be hidden at that location
+-  Now, I used simavr -g -m atmega328p -f 16000000 firmware.elf in one terminal, opened another terimnal and connected it to the first using avr-gdb firmware.elf command
+-  Examined the memory and found a lot of hex data withim
+-  Converted that hex data to ASCII value and found out the flag  
 
 ## Flag : 
 ```sh
-
+TFCCTF{Th1s_1s_som3_s1mpl3_4rdu1no_f1rmw4re}
 ```
 
 ## Concepts Learnt :
 
+- Learnt about bare metal .elf files and how to view info in them
+- Learnt about the existence of AVR micro-controllers
+- Learnt about simavr and avr-objdump commands
 
 ## Notes : 
 
+No alternate tangents
 
 ### Reference : 
+```sh
+- https://docs.platformio.org/en/latest/plus/debug-tools/simavr.html
+```
